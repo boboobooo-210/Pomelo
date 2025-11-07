@@ -1,0 +1,162 @@
+{
+  "session_id": "20251029_164304",
+  "created_time": "2025-10-29T16:49:07.344980",
+  "samples": {
+    "sample_0": {
+      "id": 0,
+      "tokens": [
+        18,
+        110,
+        26,
+        4,
+        10
+      ],
+      "source": "mars_real",
+      "filename": "labels_test.npy_3010",
+      "ground_truth_action": "mars_skeleton_3010",
+      "skeleton_data_summary": {
+        "shape": [
+          19,
+          3
+        ],
+        "dtype": "float64",
+        "size": 57
+      },
+      "annotations": {
+        "head_spine": {
+          "token": 18,
+          "description": "直立正常",
+          "timestamp": "2025-10-29T16:44:03.939922"
+        },
+        "left_arm": {
+          "token": 110,
+          "description": "抬手",
+          "timestamp": "2025-10-29T16:44:50.930933"
+        },
+        "right_arm": {
+          "token": 26,
+          "description": "抬手",
+          "timestamp": "2025-10-29T16:45:05.191776"
+        },
+        "left_leg": {
+          "token": 4,
+          "description": "直立站稳",
+          "timestamp": "2025-10-29T16:45:36.126161"
+        },
+        "right_leg": {
+          "token": 10,
+          "description": "直立站稳",
+          "timestamp": "2025-10-29T16:45:44.049971"
+        }
+      },
+      "overall_action": "抬起",
+      "annotation_time": "2025-10-29T16:49:07.344900"
+    },
+    "sample_1": {
+      "id": 1,
+      "tokens": [
+        62,
+        51,
+        115,
+        28,
+        26
+      ],
+      "source": "mars_real",
+      "filename": "labels_test.npy_723",
+      "ground_truth_action": "mars_skeleton_723",
+      "skeleton_data_summary": {
+        "shape": [
+          19,
+          3
+        ],
+        "dtype": "float64",
+        "size": 57
+      },
+      "annotations": {
+        "head_spine": {
+          "token": 62,
+          "description": "前倾",
+          "timestamp": "2025-10-29T16:49:52.655118"
+        },
+        "left_arm": {
+          "token": 51,
+          "description": "向上弯曲",
+          "timestamp": "2025-10-29T16:51:03.504611"
+        },
+        "right_arm": {
+          "token": 115,
+          "description": "向上弯曲",
+          "timestamp": "2025-10-29T16:51:16.897845"
+        },
+        "left_leg": {
+          "token": 28,
+          "description": "向前跨步",
+          "timestamp": "2025-10-29T16:52:05.875901"
+        },
+        "right_leg": {
+          "token": 26,
+          "description": "后退",
+          "timestamp": "2025-10-29T16:52:21.739622"
+        }
+      },
+      "overall_action": "向上弯曲，左腿向前跨步，右腿后退。",
+      "annotation_time": "2025-10-29T16:52:57.582247"
+    },
+    "sample_2": {
+      "id": 2,
+      "tokens": [
+        100,
+        113,
+        107,
+        12,
+        7
+      ],
+      "source": "mars_real",
+      "filename": "labels_train.npy_22356",
+      "ground_truth_action": "mars_skeleton_22356",
+      "skeleton_data_summary": {
+        "shape": [
+          19,
+          3
+        ],
+        "dtype": "float64",
+        "size": 57
+      },
+      "annotations": {
+        "head_spine": {
+          "token": 100,
+          "description": "抬头",
+          "timestamp": "2025-10-29T16:53:32.131779"
+        },
+        "left_arm": {
+          "token": 113,
+          "description": "向上弯曲",
+          "timestamp": "2025-10-29T16:53:46.233530"
+        },
+        "right_arm": {
+          "token": 107,
+          "description": "向上弯曲",
+          "timestamp": "2025-10-29T16:53:51.772844"
+        },
+        "left_leg": {
+          "token": 12,
+          "description": "弯曲",
+          "timestamp": "2025-10-29T16:53:59.468013"
+        },
+        "right_leg": {
+          "token": 7,
+          "description": "弯曲",
+          "timestamp": "2025-10-29T16:54:01.073836"
+        }
+      },
+      "overall_action": "臂向上弯曲，双腿弯曲，头部微微抬起。",
+      "annotation_time": "2025-10-29T16:54:48.828954"
+    }
+  },
+  "statistics": {
+    "total_samples": 3,
+    "annotated_samples": 0,
+    "annotation_modes": {}
+  },
+  "last_updated": "2025-10-29T16:54:48.829192"
+}

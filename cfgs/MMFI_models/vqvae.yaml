@@ -1,0 +1,87 @@
+# MMFI数据集VQ-VAE训练配置
+# 基于骨架数据的向量量化变分自编码器
+
+optimizer : {
+  type: AdamW,
+  kwargs: {
+  lr : 0.00001,  # 降低学习率
+  weight_decay : 0.00001
+}}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 200,  # 骨架数据需要更多epoch学习时序模式
+    initial_epochs : 20,
+    warming_up_init_lr: 0.00001
+}}
+
+# VQ-VAE特有参数 - 不需要温度退火
+vq_params: {
+  commitment_cost: 0.25,  # VQ-VAE的承诺损失权重
+  codebook_size: 1024,    # 码本大小，适合骨架动作的离散表示
+  embedding_dim: 256      # 嵌入向量维度
+}
+
+# KL权重调度（如果使用混合方法）
+kldweight: {
+  start : 0,
+  target: 0.05,  # VQ-VAE的KL权重较小
+  ntime: 50000
+}
+
+dataset : {
+  train : { _base_: cfgs/dataset_configs/MMFI.yaml, 
+            others: {subset: 'train'}},
+  val : { _base_: cfgs/dataset_configs/MMFI.yaml, 
+            others: {subset: 'val'}},
+  test : { _base_: cfgs/dataset_configs/MMFI.yaml, 
+            others: {subset: 'test'}}
+}
+
+model : {
+  NAME: AdaptiveSkeletonDVAE,  # 使用自适应骨架DVAE
+  latent_dim: 512,      # 潜在空间维度
+  num_tokens: 1024,     # 码本大小 
+  commitment_cost: 0.25 # VQ承诺损失权重
+}
+
+# 训练配置
+total_bs : 32         # 骨架数据可以使用较大batch size
+step_per_update : 1
+max_epoch : 100       # 增加训练轮数
+
+# 硬件和验证设置
+use_gpu: true
+val_freq: 10
+save_freq: 20
+
+# 日志和实验配置
+experiment_name: "MMFI_skeleton_vqvae"
+log_dir: "logs/mmfi_vqvae"
+checkpoint_dir: "experiments/vqvae/MMFI_models"
+
+# 损失权重配置
+loss_weights: {
+  recon_loss: 1.0,      # 重建损失
+  vq_loss: 1.0,         # VQ损失
+  action_loss: 0.3      # 动作分类损失（如果启用）
+}
+
+# 数据增强配置
+data_augmentation: {
+  enable: true,
+  noise_std: 0.01,      # 添加小量噪声
+  temporal_shift: true, # 时序偏移
+  joint_dropout: 0.1    # 关节丢弃
+}
+
+# 评估配置
+evaluation: {
+  metrics: ["recon_loss", "vq_loss", "codebook_usage", "perplexity"],
+  save_reconstructions: true,
+  save_codes: true
+}
+
+# 主要评估指标（用于模型选择）
+consider_metric: CDL1  # 暂时使用标准指标，后续可改为骨架专用指标

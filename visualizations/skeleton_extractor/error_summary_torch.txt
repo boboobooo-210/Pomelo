@@ -1,0 +1,28 @@
+MARS+Transformer骨架预测误差总结 (PyTorch版本)
+==================================================
+
+模型: MARS+Transformer PyTorch (mars_transformer_best.pth)
+测试时间: 2025-10-21T07:23:06
+
+Sample 01: 0.083221
+Sample 02: 0.052195
+Sample 03: 0.080938
+Sample 04: 0.060025
+Sample 05: 0.054979
+Sample 06: 0.061159
+Sample 07: 0.063991
+Sample 08: 0.052165
+Sample 09: 0.076738
+Sample 10: 0.074559
+
+统计信息:
+平均误差: 0.065997
+标准差: 0.011291
+最小误差: 0.052165
+最大误差: 0.083221
+
+模型信息:
+框架: PyTorch
+架构: MARS CNN + Transformer Attention
+输入格式: (N, 5, 8, 8) - PyTorch格式
+输出维度: 57 (19个关节点的3D坐标)

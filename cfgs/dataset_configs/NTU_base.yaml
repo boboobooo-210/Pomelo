@@ -1,0 +1,4 @@
+# NTU RGB+D 基础配置
+NAME: NTU
+DATA_PATH: ../HumanPoint-BERT/data/NTU-RGB+D
+N_POINTS: 25

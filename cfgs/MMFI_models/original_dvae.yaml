@@ -1,0 +1,77 @@
+# MMFI数据集原版dVAE训练配置
+# 使用原版DiscreteVAE网络结构进行训练
+
+optimizer : {
+  type: AdamW,
+  kwargs: {
+  lr : 0.0005,  # 原版dVAE使用的学习率
+  weight_decay : 0.0005
+}}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 100,  # 根据MMFI数据集调整epoch数
+    initial_epochs : 10,
+    warming_up_init_lr: 0.00005
+}}
+
+# 原版dVAE的温度退火调度
+temp: {
+  start : 1,
+  target: 0.0625,
+  ntime: 100000 
+}
+
+# 原版dVAE的KL散度权重调度
+kldweight: {
+  start : 0,
+  target: 0.1,
+  ntime: 100000
+}
+
+dataset : {
+  train : { _base_: cfgs/dataset_configs/MMFI.yaml, 
+            others: {subset: 'train', npoints: 512}},  # 降采样到512个点以适配原版dVAE结构
+  val : { _base_: cfgs/dataset_configs/MMFI.yaml, 
+            others: {subset: 'val', npoints: 512}},
+  test : { _base_: cfgs/dataset_configs/MMFI.yaml, 
+            others: {subset: 'test', npoints: 512}}
+}
+
+# 原版dVAE模型配置
+model : {
+  NAME: DiscreteVAE,     # 使用原版DiscreteVAE模型
+  group_size: 32,        # 每组点数
+  num_group: 16,         # 组数: 512/32 = 16组
+  encoder_dims: 256,     # 编码器维度
+  num_tokens: 8192,      # 码本大小
+  tokens_dims: 256,      # token维度
+  decoder_dims: 256,     # 解码器维度
+}
+
+# 训练配置
+total_bs : 32          # 针对骨架数据适当降低batch size
+step_per_update : 1
+max_epoch : 100
+
+# 硬件和验证设置
+use_gpu: true
+val_freq: 10
+save_freq: 20
+
+# 评估指标
+consider_metric: CDL1  # 使用Chamfer距离L1作为主要评估指标
+
+# 日志和实验配置
+experiment: {
+  exp_name: "mmfi_original_dvae",
+  tags: ["MMFI", "original_dvae", "discrete_vae"],
+}
+
+# 可视化设置
+vis: {
+  vis_freq: 50,
+  num_vis: 10,
+  vis_path: "experiments/{experiment.exp_name}/visualizations",
+}

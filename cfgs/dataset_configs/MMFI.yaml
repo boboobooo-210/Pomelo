@@ -1,0 +1,12 @@
+# MMFI数据集基础配置文件
+# Multimodal Fitness Instructor Dataset
+# 支持骨架序列数据的加载和预处理
+
+NAME: MMFI
+DATA_PATH: "data/MMFI"
+N_POINTS: 650  # 点云采样数量，匹配实际生成的点数
+
+# 数据分割策略（在数据集类中硬编码）
+# train: E01-E03全部 + E04的S31,S32
+# val: E04的S37-S40  
+# test: E04的S33-S36

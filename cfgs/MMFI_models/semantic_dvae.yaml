@@ -1,0 +1,87 @@
+# MMFI数据集语义DVAE训练配置
+# 使用SemanticSmartDVAE模型进行语义感知的码本学习
+
+optimizer : {
+  type: AdamW,
+  kwargs: {
+  lr : 0.0001,  # 语义DVAE使用较低学习率
+  weight_decay : 0.0001
+}}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 150,  # 语义学习需要更多epoch
+    initial_epochs : 15,
+    warming_up_init_lr: 0.00001
+}}
+
+# 语义DVAE的温度退火调度
+temp: {
+  start : 1,
+  target: 0.0625,
+  ntime: 100000 
+}
+
+# 语义DVAE的KL散度权重调度
+kldweight: {
+  start : 0,
+  target: 0.1,
+  ntime: 100000
+}
+
+dataset : {
+  train : { _base_: cfgs/dataset_configs/MMFI.yaml, 
+            others: {subset: 'train', npoints: 650}},  # 使用MMFI的650个点
+  val : { _base_: cfgs/dataset_configs/MMFI.yaml, 
+            others: {subset: 'val', npoints: 650}},
+  test : { _base_: cfgs/dataset_configs/MMFI.yaml, 
+            others: {subset: 'test', npoints: 650}}
+}
+
+model : {
+  NAME: SemanticSmartDVAE,  # 使用语义智能DVAE
+  group_size: 32, 
+  num_group: 20,  # 适应650个点: 20*32=640，接近650
+  encoder_dims: 256,
+  num_tokens: 2048,  # 适中的码本大小，便于语义学习
+  tokens_dims: 256, 
+  decoder_dims: 256,
+  num_actions: 27,  # MMFI数据集的27个动作
+  semantic_weight: 0.1  # 语义损失权重
+}
+
+# 训练配置
+total_bs : 16         # 语义DVAE使用较小batch size
+step_per_update : 1
+max_epoch : 150       # 语义学习需要更多轮数
+
+# 硬件和验证设置
+use_gpu: true
+val_freq: 10
+save_freq: 25
+
+# 日志和实验配置
+experiment_name: "MMFI_semantic_dvae"
+log_dir: "logs/mmfi_semantic_dvae"
+checkpoint_dir: "experiments/semantic_dvae/MMFI_models"
+
+# 语义DVAE特有的损失权重配置
+semantic_loss_weights: {
+  recon_loss: 1.0,           # 重建损失
+  kl_loss: 1.0,              # KL散度损失
+  semantic_consistency: 0.1,  # 语义一致性损失
+  action_classification: 0.1, # 动作分类损失
+  diversity_regularization: 0.01  # 多样性正则化
+}
+
+# 语义码本配置
+semantic_codebook_config: {
+  use_action_guidance: true,     # 使用动作指导
+  action_embedding_dim: 256,     # 动作嵌入维度
+  semantic_enhancer_layers: 2,   # 语义增强网络层数
+  affinity_learning_rate: 0.001  # 动作-码本关联学习率
+}
+
+# 评估指标配置
+consider_metric: CDL1

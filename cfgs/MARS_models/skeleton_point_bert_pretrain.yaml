@@ -1,0 +1,81 @@
+# 骨架Point-BERT预训练配置
+# 阶段2：Point-BERT预训练
+optimizer : {
+  type: AdamW,
+  kwargs: {
+  lr : 0.0003, 
+  weight_decay : 0.0001
+}}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 200,
+    initial_epochs : 20,
+    warming_up_init_lr: 0.00003
+}}
+
+# 数据集配置
+dataset : {
+  train : { _base_: cfgs/dataset_configs/MARS.yaml, 
+            others: {subset: 'train', npoints: 512}},
+  val : { _base_: cfgs/dataset_configs/MARS.yaml, 
+            others: {subset: 'val', npoints: 550}},
+  test : { _base_: cfgs/dataset_configs/MARS.yaml, 
+            others: {subset: 'test', npoints: 550}},
+  # 额外的训练数据用于特征学习
+  extra_train : { _base_: cfgs/dataset_configs/MARS.yaml, 
+                 others: {subset: 'train', npoints: 512}}
+}
+
+# Point-BERT模型配置
+model : {
+  NAME: Point_BERT,
+  m: 65536,  # MoCo队列大小
+  T: 0.2,    # 温度参数
+  K: 4096,   # 负样本数量
+  
+  # dVAE配置
+  dvae_config: {
+    NAME: DiscreteVAE,
+    group_size: 32,
+    num_group: 16,
+    encoder_dims: 256,
+    num_tokens: 8192,
+    tokens_dims: 256,
+    decoder_dims: 256,
+    # 加载预训练的dVAE模型
+    ckpt: "experiments/dvae/MARS_models/MARS_dvae_pretrain/ckpt-best.pth"
+  },
+  
+  # Transformer配置
+  transformer_config: {
+    mask_ratio: 0.8,        # 掩码比例
+    mask_type: 'rand',      # 掩码类型
+    drop_path_rate: 0.3,    # DropPath率
+    num_heads: 8,           # 注意力头数
+    encoder_dims: 384,      # 编码器维度
+    decoder_dims: 384,      # 解码器维度
+    num_layers: 12,         # 层数
+    
+    # 损失函数权重
+    moco_loss: true,        # MoCo对比学习损失
+    dvae_loss: true,        # dVAE重构损失
+    cutmix_loss: false,     # CutMix损失
+    return_all_tokens: false # 是否返回所有token
+  }
+}
+
+# 训练设置
+total_bs : 32
+step_per_update : 1
+max_epoch : 200
+use_gpu: true
+val_freq: 10
+num_workers: 4
+seed: 2021
+consider_metric: acc
+
+# 预训练阶段标识
+stage: "point_bert_pretrain"
+task: "self_supervised_learning"

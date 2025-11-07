@@ -1,0 +1,73 @@
+# NTU RGB+D DVAE训练配置
+# 使用数据增强策略构建骨架点云码本
+
+optimizer: {
+  type: AdamW,
+  kwargs: {
+    lr: 0.0005, 
+    weight_decay: 0.0005
+  }
+}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 300,
+    initial_epochs: 10,
+    warming_up_init_lr: 0.00005
+  }
+}
+
+# dVAE相关参数
+temp: {
+  start: 1,
+  target: 0.0625,
+  ntime: 100000 
+}
+
+kldweight: {
+  start: 0,
+  target: 0.1,
+  ntime: 100000
+}
+
+# 数据集配置
+dataset: {
+  train: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {subset: 'train', npoints: 512, augment: true}
+  },
+  val: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {subset: 'val', npoints: 512, augment: false}
+  },
+  test: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {subset: 'test', npoints: 512, augment: false}
+  }
+}
+
+# 骨架专用Tokenizer配置
+model: {
+  NAME: SkeletonTokenizer,
+  target_points: 720,     # 目标点数
+  encoder_dims: 256,      # 编码器维度
+  decoder_dims: 256,      # 解码器维度
+  tokens_dims: 256        # 码字维度
+}
+
+# 训练设置
+total_bs: 32
+step_per_update: 1
+max_epoch: 300
+use_gpu: true
+val_freq: 10
+num_workers: 4
+seed: 2021
+consider_metric: CDL1
+
+# 实验标识
+stage: "dvae_pretrain"
+task: "skeleton_reconstruction"
+experiment_name: "ntu_skeleton_dvae"
+description: "NTU RGB+D骨架数据集DVAE预训练，构建骨架点云码本"

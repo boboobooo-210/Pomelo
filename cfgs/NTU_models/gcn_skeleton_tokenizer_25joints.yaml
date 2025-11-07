@@ -1,0 +1,182 @@
+# NTU RGB+D 时空图卷积(GCN)骨架Tokenizer训练配置
+# 基于解剖学连接的革命性25关节点架构
+
+optimizer: {
+  type: AdamW,
+  kwargs: {
+    lr: 0.002,              # 适配GCN架构的学习率
+    weight_decay: 0.0001    # 较低的权重衰减
+  }
+}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 20,             # GCN收敛更快
+    initial_epochs: 2,      # 快速预热
+    warming_up_init_lr: 0.0001
+  }
+}
+
+# 向量量化相关参数
+vq: {
+  commitment_cost: 0.25,    # VQ-VAE损失权重
+  num_tokens: 512,          # 码本大小
+  token_dim: 256            # Token维度
+}
+
+# 早停配置
+early_stopping: {
+  patience: 5,              # GCN训练更快
+  min_delta: 0.001,
+  monitor: reconstruction_loss
+}
+
+# 数据集配置 - 原始NTU-RGB+D数据
+dataset: {
+  train: { 
+    _base_: cfgs/dataset_configs/NTU_skeleton_raw.yaml, 
+    others: {
+      subset: 'train',
+      npoints: 25,            # 直接使用25个关节点
+      single_frame: true,     # 单帧处理模式
+      normalize: true,        # 骨架归一化
+      max_files: 1000,        # 控制文件数量
+      augment: false,         # 暂时关闭增强
+      whole: false,
+      bs: 8                   # 内存优化批次大小
+    }
+  },
+  val: { 
+    _base_: cfgs/dataset_configs/NTU_skeleton_raw.yaml, 
+    others: {
+      subset: 'val',
+      npoints: 25,
+      single_frame: true,
+      normalize: true,
+      max_files: 200,
+      augment: false,
+      whole: false,
+      bs: 4
+    }
+  },
+  test: {
+    _base_: cfgs/dataset_configs/NTU_skeleton_raw.yaml,
+    others: {
+      subset: 'test',
+      npoints: 25,
+      single_frame: true,
+      normalize: true,
+      max_files: 200,
+      augment: false,
+      whole: false,
+      bs: 4
+    }
+  }
+}
+
+# GCN骨架Tokenizer配置
+model: {
+  NAME: GCNSkeletonTokenizer,
+  num_joints: 25,           # NTU RGB+D关节点数
+  num_tokens: 512,          # 码本大小
+  token_dim: 256,           # Token维度
+  temporal_length: 1,       # 单帧处理
+  
+  # 语义分组配置
+  semantic_groups: {
+    axial: [0, 1, 20, 2, 3],                      # 轴向：脊柱+头部 (5关节)
+    upper_limbs: [4, 5, 6, 7, 21, 22, 8, 9, 10, 11, 23, 24],  # 上肢 (12关节)
+    lower_limbs: [12, 13, 14, 15, 16, 17, 18, 19]  # 下肢 (8关节)
+  },
+  
+  # ST-GCN层配置
+  st_gcn: {
+    in_channels: 64,
+    kernel_size: 3,
+    stride: 1,
+    dropout: 0.1
+  }
+}
+
+# 训练设置 - 内存优化
+total_bs: 8               # 小批次大小
+step_per_update: 2        # 梯度累积
+max_epoch: 20             # GCN快速收敛
+use_gpu: true
+val_freq: 5               # 验证频率
+num_workers: 1            # 单进程数据加载
+seed: 2021
+consider_metric: reconstruction_loss
+
+# GCN特化配置
+stage: "gcn_pretrain"
+task: "skeleton_reconstruction"
+experiment_name: "ntu_gcn_skeleton_tokenizer_25joints"
+description: "NTU RGB+D时空图卷积骨架Tokenizer，基于25关节点解剖学连接"
+
+# 内存优化配置
+memory_optimization: {
+  strategy: "gcn_optimized",
+  batch_size: 8,
+  max_files: 1000,
+  num_workers: 1,
+  features: [
+    "25_joints_vs_720_points",
+    "single_frame_processing", 
+    "limited_file_count",
+    "streaming_data_loading",
+    "memory_cleanup",
+    "reduced_batch_size"
+  ]
+}
+
+# GCN架构信息
+gcn_architecture: {
+  connection_type: "anatomical",         # 解剖学连接
+  graph_type: "spatial_temporal",        # 时空图
+  grouping_strategy: "semantic",         # 语义分组
+  num_groups: 3,                         # 3个语义分组
+  total_joints: 25,                      # 总关节数
+  edges: 24,                             # 连接边数
+  advantage: "29x_computation_reduction", # vs 720点DGCNN
+  memory_efficient: true
+}
+
+# 骨架连接定义
+skeleton_connections: {
+  # 头部脊柱连接
+  head_spine: [[3,2], [2,20], [20,1], [1,0]],
+  
+  # 左臂连接
+  left_arm: [[20,4], [4,5], [5,6], [6,22], [6,7], [7,21]],
+  
+  # 右臂连接  
+  right_arm: [[20,8], [8,9], [9,10], [10,24], [10,11], [11,23]],
+  
+  # 左腿连接
+  left_leg: [[0,12], [12,13], [13,14], [14,15]],
+  
+  # 右腿连接
+  right_leg: [[0,16], [16,17], [17,18], [18,19]]
+}
+
+# 数据流信息
+data_flow: {
+  input: "NTU_RGB+D_raw_skeleton_files",
+  preprocessing: "minimal_normalization",
+  architecture: "ST_GCN_25_joints", 
+  output: "discrete_tokens_512_codebook",
+  advantage: "direct_anatomical_processing"
+}
+
+# 对比信息
+comparison_with_dgcnn: {
+  dgcnn_points: 720,
+  gcn_joints: 25,
+  computation_reduction: "29x",
+  memory_reduction: "significant",
+  semantic_groups: "3_vs_7",
+  connection_basis: "anatomical_vs_knn",
+  processing_type: "direct_vs_densified"
+}

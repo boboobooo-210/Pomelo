@@ -1,0 +1,7 @@
+NAME: MARS
+DATA_PATH: data/MARS
+N_POINTS: 550
+# MARS数据集配置
+# 训练数据: (24066, 550, 3) - 24066个人体骨架样本，每个样本550个点
+# 验证数据: Augmented_labels_validate.npy 
+# 测试数据: Augmented_labels_test.npy

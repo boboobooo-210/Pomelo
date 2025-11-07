@@ -1,0 +1,141 @@
+# NTU RGB+D 骨架DVAE风格预训练配置
+# 使用DVAE风格分组策略，解决团状集中问题
+
+optimizer: {
+  type: AdamW,
+  kwargs: {
+    lr: 0.0005,  # 适当提高学习率，新架构需要更多学习
+    weight_decay: 0.0005  # 减少正则化，避免过度约束
+  }
+}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 50,   # 修改为50轮训练
+    initial_epochs: 5,   # 相应调整预热轮数
+    warming_up_init_lr: 0.00005  # 调整预热学习率
+  }
+}
+
+# 早停配置 - 调整为50轮
+early_stopping: {
+  patience: 10,      # 10轮无改善则停止 (50轮的20%)
+  min_delta: 0.001,  # 最小改善阈值
+  monitor: 'CDL1'    # 监控CDL1指标
+}
+
+# dVAE相关参数 - 修复调度问题
+temp: {
+  start: 1.0,
+  target: 0.2,      # 提高最终温度，避免过于硬化
+  ntime: 110000     # 调整调度时间 (50轮 * 2217批次)
+}
+
+kldweight: {
+  start: 0.0,
+  target: 0.01,     # 大幅降低KL权重，避免损失爆炸
+  ntime: 110000     # 调整调度时间，使变化更平缓
+}
+
+# 数据集配置 - 使用增强策略
+dataset: {
+  train: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {
+      subset: 'train',
+      npoints: 720,           # 增强后目标点数（弹性填充）
+      density_uniform: true,  # 使用密度均匀策略
+      min_points_per_bone: 3, # 每根骨头最少插值点数
+      action_filter: 'dvae',  # 单人日常+康复动作
+      augment: true,
+      whole: false
+    }
+  },
+  val: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {
+      subset: 'val',
+      npoints: 720,
+      density_uniform: true,
+      min_points_per_bone: 3,
+      action_filter: 'dvae',
+      augment: false,
+      whole: false
+    }
+  },
+  test: {
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml,
+    others: {
+      subset: 'test',
+      npoints: 720,
+      density_uniform: true,
+      min_points_per_bone: 3,
+      action_filter: 'dvae',
+      augment: false,
+      whole: false
+    }
+  }
+}
+
+# 18分组dVAE架构配置 (减少信息压缩)
+model: {
+  NAME: SkeletonTokenizer,
+  # 18分组参数 (减少信息压缩，提高重建质量)
+  num_group: 18,          # 分组数量 (18组，信息容量翻倍)
+  group_size: 40,         # 每组点数 (40是4的倍数，总共720个点)
+  encoder_dims: 384,      # 编码器维度
+  codebook_size: 512,     # 码本大小 (码字数量)
+  tokens_dims: 256,       # 码字维度
+  decoder_dims: 384       # 解码器维度
+}
+
+# 训练设置 - 使用高效DVAE实现
+total_bs: 32                # 恢复原始批次大小
+step_per_update: 1          # 恢复原始梯度累积
+max_epoch: 50               # 修改为50轮
+use_gpu: true
+val_freq: 5                 # 每5轮验证一次
+num_workers: 4              # 恢复原始工作进程数
+seed: 2021
+consider_metric: CDL1
+
+# 18分组预训练阶段标识
+stage: "18groups_pretrain"
+task: "skeleton_reconstruction"
+experiment_name: "ntu_skeleton_18groups_50epochs"
+description: "NTU RGB+D骨架18分组预训练，减少信息压缩解决点云离散问题，50轮训练"
+
+# 18分组配置信息
+groups_18_info: {
+  grouping_strategy: "18_groups_fine_grained",
+  num_groups: 18,
+  codebook_size: 512,
+  points_per_group: 40,
+  total_codebooks: 9216,  # 512^18 理论容量
+  information_capacity: "162_bits",  # 相比9组的81bits翻倍
+  compression_ratio: "120:1",  # 相比9组的240:1显著改善
+  improvements: [
+    "reduce_information_compression",
+    "increase_spatial_resolution",
+    "improve_local_detail_preservation",
+    "reduce_point_cloud_sparsity"
+  ],
+  expected_improvements: [
+    "denser_reconstructed_point_clouds",
+    "fewer_dbscan_clusters",
+    "better_skeleton_structure_preservation",
+    "improved_mse_scores"
+  ]
+}
+
+# 数据增强信息 - 弹性填充策略
+augmentation_info: {
+  strategy: "elastic_bone_interpolation",
+  original_joints: 25,
+  connections: 24,
+  density_uniform: true,
+  target_points: 720,
+  min_points_per_bone: 3,
+  description: "根据骨骼长度动态分配插值点数，保持密度均匀"
+}

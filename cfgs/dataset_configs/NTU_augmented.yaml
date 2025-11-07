@@ -1,0 +1,8 @@
+# NTU RGB+D 增强数据集配置 (弹性填充策略)
+NAME: NTUAugmented
+DATA_PATH: ../HumanPoint-BERT/data/NTU-RGB+D
+N_POINTS: 25  # 原始关节数
+npoints: 720  # 目标点云数量（默认720）
+density_uniform: true  # 使用密度均匀的弹性填充策略
+min_points_per_bone: 3  # 每根骨头最少插值点数
+action_filter: dvae  # 使用单人日常动作和康复动作

@@ -1,0 +1,146 @@
+# NTU RGB+D 骨架DVAE风格Tokenizer训练配置 - 超高效版本
+# 针对内存占用过高问题的极致优化
+
+optimizer: {
+  type: AdamW,
+  kwargs: {
+    lr: 0.001,              # 提高学习率补偿小批次
+    weight_decay: 0.0005
+  }
+}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 50,
+    initial_epochs: 3,      # 减少预热轮数
+    warming_up_init_lr: 0.0001
+  }
+}
+
+# dVAE相关参数 - 50轮优化
+temp: {
+  start: 1,
+  target: 0.0625,
+  ntime: 30000            # 调整为50轮对应的步数
+}
+
+kldweight: {
+  start: 0,
+  target: 0.1,
+  ntime: 30000
+}
+
+# 早停配置 - 防止过拟合
+early_stopping: {
+  patience: 8,            # 8轮无改善则停止
+  min_delta: 0.001,
+  monitor: CDL1
+}
+
+# 数据集配置 - 极致内存优化
+dataset: {
+  train: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {
+      subset: 'train',
+      npoints: 720,
+      density_uniform: true,
+      min_points_per_bone: 3,
+      action_filter: 'dvae',
+      augment: false,       # 关闭数据增强减少内存
+      whole: false,
+      bs: 8                 # 极小批次大小
+    }
+  },
+  val: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {
+      subset: 'val',
+      npoints: 720,
+      density_uniform: true,
+      min_points_per_bone: 3,
+      action_filter: 'dvae',
+      augment: false,
+      whole: false,
+      bs: 1
+    }
+  },
+  test: {
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml,
+    others: {
+      subset: 'test',
+      npoints: 720,
+      density_uniform: true,
+      min_points_per_bone: 3,
+      action_filter: 'dvae',
+      augment: false,
+      whole: false,
+      bs: 1
+    }
+  }
+}
+
+# DVAE风格骨架Tokenizer配置 - 内存优化
+model: {
+  NAME: SkeletonTokenizer,
+  target_points: 720,
+  encoder_dims: 128,      # 减少编码器维度: 256 → 128
+  decoder_dims: 128,      # 减少解码器维度: 256 → 128
+  tokens_dims: 128,       # 减少码字维度: 256 → 128
+  num_groups: 6,          # 减少分组数: 8 → 6
+  codebook_size: 256      # 减少码本大小: 512 → 256
+}
+
+# 训练设置 - 极致内存优化
+total_bs: 8               # 极小批次: 16 → 8
+step_per_update: 4        # 增加梯度累积: 2 → 4 (等效批次32)
+max_epoch: 50
+use_gpu: true
+val_freq: 10              # 减少验证频率: 5 → 10
+num_workers: 1            # 最少工作进程: 2 → 1
+seed: 2021
+consider_metric: CDL1
+
+# 内存优化标识
+stage: "ultra_efficient_pretrain"
+task: "skeleton_reconstruction"
+experiment_name: "ntu_skeleton_dvae_ultra_efficient_50epochs"
+description: "NTU RGB+D骨架DVAE风格Tokenizer训练，极致内存优化版本"
+
+# 内存优化配置信息
+memory_optimization: {
+  strategy: "ultra_efficient",
+  batch_size: 8,
+  gradient_accumulation: 4,
+  model_size_reduction: 50,
+  features: [
+    "reduced_model_dimensions",
+    "minimal_batch_size",
+    "gradient_accumulation",
+    "reduced_groups_and_codebook",
+    "disabled_data_augmentation",
+    "single_worker_dataloader"
+  ]
+}
+
+# DVAE风格配置信息 - 简化版
+dvae_style_info: {
+  grouping_strategy: "fps_random_sampling",
+  num_groups: 6,
+  codebook_size: 256,
+  points_per_group: 120,    # 720/6
+  total_codebooks: 1536,    # 6×256
+  memory_optimized: true
+}
+
+# 数据增强信息
+augmentation_info: {
+  strategy: "elastic_bone_interpolation",
+  original_joints: 25,
+  connections: 24,
+  density_uniform: true,
+  target_points: 720,
+  min_points_per_bone: 3,
+  description: "根据骨骼长度动态分配插值点数，保持密度均匀"
+}

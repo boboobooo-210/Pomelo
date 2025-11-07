@@ -1,0 +1,62 @@
+# NTU-Pred H5数据集配置
+# 用于加载预处理的增强H5文件（data/NTU-Pred/*.h5）
+NAME: NTUPredH5Dataset  # 修正注册名称
+DATA_PATH: ../HumanPoint-BERT/data/NTU-Pred
+N_POINTS: 720  # H5文件中的增强点数
+npoints: 720   # 目标点云数量（已经增强到720）
+file_format: h5  # 文件格式为H5
+
+# 点云分组配置 - 适配OptimizedMaskedSkeletonTokenizer
+num_group: 7  # 解剖学分组数量
+anatomical_regions:
+  - name: initial_joints
+    point_range: [0, 25] 
+    description: "初始25个关节点，仅用于提取中心点"
+    role: "center_point_provider"
+  - name: head_neck
+    point_range: [25, 88]
+    description: "头颈区域，2个中心点"
+    centers: [3, 2]  # 头部、颈部关节索引
+    processor_type: "MLP"
+  - name: torso
+    point_range: [88, 115]  
+    description: "躯干区域，3个中心点"
+    centers: [20, 1, 0]  # 腰椎、胸椎、颈基关节索引
+    processor_type: "Graph"
+  - name: left_arm
+    point_range: [115, 250]
+    description: "左臂区域，6个中心点"
+    centers: [4, 5, 6, 7, 21, 22]  # 左肩、左肘、左腕等关节索引
+    processor_type: "Graph"
+  - name: right_arm
+    point_range: [250, 385]
+    description: "右臂区域，6个中心点"
+    centers: [8, 9, 10, 11, 23, 24]  # 右肩、右肘、右腕等关节索引
+    processor_type: "Graph"
+  - name: left_leg
+    point_range: [385, 548]
+    description: "左腿区域，4个中心点"
+    centers: [12, 13, 14, 15]  # 左髋、左膝、左踝等关节索引
+    processor_type: "Graph"
+  - name: right_leg
+    point_range: [548, 720]
+    description: "右腿区域，4个中心点"
+    centers: [16, 17, 18, 19]  # 右髋、右膝、右踝等关节索引
+    processor_type: "Graph"
+
+# 距离约束配置 - 已移除所有距离限制
+# distance_constraints:
+#   head_neck: 0.3     # 头颈区域最大连接距离 - 已移除
+#   torso: 0.5         # 躯干区域最大连接距离 - 已移除
+#   left_arm: 0.8      # 左臂区域最大连接距离 - 已移除
+#   right_arm: 0.8     # 右臂区域最大连接距离 - 已移除
+#   left_leg: 1.0      # 左腿区域最大连接距离 - 已移除
+#   right_leg: 1.0     # 右腿区域最大连接距离 - 已移除
+
+# 数据划分配置
+train_subjects: [1,2,4,5,8,9,13,14,15,16,17,18,19,25,27,28,31,34,35,38]
+test_subjects: [3,6,7,10,11,12,20,21,22,23,24,26,29,30,32,33,36,37,39,40]
+val_subjects: [1,2,4,5]  # 从训练集分出验证集
+
+# 动作过滤配置
+action_filter: dvae  # 使用适合骨架学习的动作

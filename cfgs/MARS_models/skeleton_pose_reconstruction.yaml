@@ -1,0 +1,110 @@
+# 骨架Point-BERT下游任务配置
+# 阶段3：骨架姿态重构任务
+optimizer : {
+  type: AdamW,
+  kwargs: {
+  lr : 0.0001,  # 较小的学习率用于微调
+  weight_decay : 0.0001
+}}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 100,
+    initial_epochs : 5,
+    warming_up_init_lr: 0.00001
+}}
+
+# 数据集配置 - 需要带有姿态标签的数据
+dataset : {
+  train : { _base_: cfgs/dataset_configs/MARS_with_pose.yaml, 
+            others: {subset: 'train', npoints: 512}},
+  val : { _base_: cfgs/dataset_configs/MARS_with_pose.yaml, 
+            others: {subset: 'val', npoints: 550}},
+  test : { _base_: cfgs/dataset_configs/MARS_with_pose.yaml, 
+            others: {subset: 'test', npoints: 550}}
+}
+
+# 骨架Point-BERT模型配置
+model : {
+  NAME: Skeleton_Point_BERT,
+  
+  # 特征维度
+  feature_dim: 384,
+  num_joints: 24,
+  pose_dim: 3,
+  
+  # 噪声清理模块配置
+  noise_hidden_dim: 256,
+  
+  # Point-BERT配置
+  point_bert_config: {
+    NAME: Point_BERT,
+    m: 65536,
+    T: 0.2,
+    K: 4096,
+    
+    # 加载预训练的Point-BERT模型
+    pretrained_ckpt: "experiments/point_bert/MARS_models/skeleton_point_bert_pretrain/ckpt-best.pth",
+    
+    # 冻结Point-BERT参数（可选）
+    freeze_backbone: false,
+    
+    dvae_config: {
+      NAME: DiscreteVAE,
+      group_size: 32,
+      num_group: 16,
+      encoder_dims: 256,
+      num_tokens: 8192,
+      tokens_dims: 256,
+      decoder_dims: 256,
+      ckpt: "experiments/dvae/MARS_models/MARS_dvae_pretrain/ckpt-best.pth"
+    },
+    
+    transformer_config: {
+      mask_ratio: 0.8,
+      mask_type: 'rand',
+      drop_path_rate: 0.3,
+      num_heads: 8,
+      encoder_dims: 384,
+      decoder_dims: 384,
+      num_layers: 12,
+      moco_loss: true,
+      dvae_loss: true,
+      cutmix_loss: false,
+      return_all_tokens: false
+    }
+  },
+  
+  # 损失函数权重
+  loss_weights: {
+    joint_loss: 10.0,        # 关节位置损失权重
+    pose_loss: 5.0,          # 姿态参数损失权重
+    bone_length_loss: 1.0,   # 骨长约束损失权重
+    symmetry_loss: 2.0,      # 对称性损失权重
+    noise_loss: 0.1,         # 噪声清理损失权重
+    bert_loss: 1.0           # Point-BERT损失权重
+  }
+}
+
+# 训练设置
+total_bs : 16  # 较小的batch size用于下游任务
+step_per_update : 1
+max_epoch : 100
+use_gpu: true
+val_freq: 5
+num_workers: 4
+seed: 2021
+consider_metric: joint_error  # 关节误差作为评估指标
+
+# 下游任务标识
+stage: "downstream_finetune"
+task: "skeleton_pose_reconstruction"
+
+# 评估指标
+metrics: {
+  joint_error: true,      # 关节位置误差
+  pose_error: true,       # 姿态参数误差
+  bone_length_error: true, # 骨长误差
+  symmetry_error: true    # 对称性误差
+}

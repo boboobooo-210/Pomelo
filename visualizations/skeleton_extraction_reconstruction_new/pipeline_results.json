@@ -1,0 +1,86 @@
+[
+  {
+    "sample_id": 1,
+    "recon_mse_error": 0.008060342632234097,
+    "vq_loss": 0.0016634231433272362,
+    "max_joint_error": 0.23930254578590393,
+    "mean_joint_error": 0.14688098430633545
+  },
+  {
+    "sample_id": 2,
+    "recon_mse_error": 0.008447517640888691,
+    "vq_loss": 0.0022581820376217365,
+    "max_joint_error": 0.2976841926574707,
+    "mean_joint_error": 0.14911794662475586
+  },
+  {
+    "sample_id": 3,
+    "recon_mse_error": 0.00862096343189478,
+    "vq_loss": 0.0025166156701743603,
+    "max_joint_error": 0.2836434245109558,
+    "mean_joint_error": 0.1440557837486267
+  },
+  {
+    "sample_id": 4,
+    "recon_mse_error": 0.0048328000120818615,
+    "vq_loss": 0.0021126335486769676,
+    "max_joint_error": 0.22343620657920837,
+    "mean_joint_error": 0.10962405055761337
+  },
+  {
+    "sample_id": 5,
+    "recon_mse_error": 0.014506522566080093,
+    "vq_loss": 0.0023712434340268373,
+    "max_joint_error": 0.4513852596282959,
+    "mean_joint_error": 0.17606675624847412
+  },
+  {
+    "sample_id": 6,
+    "recon_mse_error": 0.006583243142813444,
+    "vq_loss": 0.0020015034824609756,
+    "max_joint_error": 0.2616744935512543,
+    "mean_joint_error": 0.12355954200029373
+  },
+  {
+    "sample_id": 7,
+    "recon_mse_error": 0.0046625263057649136,
+    "vq_loss": 0.001912974868901074,
+    "max_joint_error": 0.21857379376888275,
+    "mean_joint_error": 0.10726464539766312
+  },
+  {
+    "sample_id": 8,
+    "recon_mse_error": 0.004376495722681284,
+    "vq_loss": 0.0015850851777940989,
+    "max_joint_error": 0.19078302383422852,
+    "mean_joint_error": 0.10261344164609909
+  },
+  {
+    "sample_id": 9,
+    "recon_mse_error": 0.02974383905529976,
+    "vq_loss": 0.003382037626579404,
+    "max_joint_error": 0.7113406658172607,
+    "mean_joint_error": 0.24936872720718384
+  },
+  {
+    "sample_id": 10,
+    "recon_mse_error": 0.01084169466048479,
+    "vq_loss": 0.0023182020522654057,
+    "max_joint_error": 0.36016663908958435,
+    "mean_joint_error": 0.1621050238609314
+  },
+  {
+    "sample_id": 11,
+    "recon_mse_error": 0.0056619769893586636,
+    "vq_loss": 0.0019515049643814564,
+    "max_joint_error": 0.21475720405578613,
+    "mean_joint_error": 0.11819687485694885
+  },
+  {
+    "sample_id": 12,
+    "recon_mse_error": 0.01691935397684574,
+    "vq_loss": 0.0025530559942126274,
+    "max_joint_error": 0.5042921900749207,
+    "mean_joint_error": 0.18865472078323364
+  }
+]

@@ -1,0 +1,26 @@
+# NTU RGB+D 原始骨架数据配置
+NAME: NTU_Skeleton_Raw
+DATA_PATH: ../HumanPoint-BERT/data/NTU-RGB+D
+N_POINTS: 25
+
+# 动作过滤配置 - 排除交互动作 (数字ID)
+action_filter: {
+  exclude: [
+    50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+    106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 
+    117, 118, 119, 120
+  ],
+  description: "排除双人交互动作，仅使用单人动作进行训练"
+}
+
+# 数据集划分配置 - 标准CV划分
+dataset_split: {
+  train_ratio: 0.8,
+  val_ratio: 0.15, 
+  test_ratio: 0.05,
+  split_method: "cross_subject",
+  description: "按照交叉主体协议划分数据集"
+}
+
+# # 内存优化选项
+# max_files: 1000  # 限制文件数量用于快速测试

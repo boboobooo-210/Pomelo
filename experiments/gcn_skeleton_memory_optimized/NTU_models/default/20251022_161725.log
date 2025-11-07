@@ -1,0 +1,441 @@
+2025-10-22 16:17:25,935 - gcn_skeleton_memory_optimized - INFO - Copy the Config file from cfgs/NTU_models/gcn_skeleton_memory_optimized.yaml to ./experiments/gcn_skeleton_memory_optimized/NTU_models/default/config.yaml
+2025-10-22 16:17:25,935 - gcn_skeleton_memory_optimized - INFO - args.config : cfgs/NTU_models/gcn_skeleton_memory_optimized.yaml
+2025-10-22 16:17:25,935 - gcn_skeleton_memory_optimized - INFO - args.launcher : none
+2025-10-22 16:17:25,935 - gcn_skeleton_memory_optimized - INFO - args.local_rank : 0
+2025-10-22 16:17:25,935 - gcn_skeleton_memory_optimized - INFO - args.num_workers : 4
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.seed : 0
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.deterministic : False
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.sync_bn : False
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.exp_name : default
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.start_ckpts : None
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.ckpts : None
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.val_freq : 1
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.resume : False
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.test : False
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.finetune_model : False
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.scratch_model : False
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.label_smoothing : False
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.mode : None
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.way : -1
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.shot : -1
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.fold : -1
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.experiment_path : ./experiments/gcn_skeleton_memory_optimized/NTU_models/default
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.tfboard_path : ./experiments/gcn_skeleton_memory_optimized/NTU_models/TFBoard/default
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.log_name : gcn_skeleton_memory_optimized
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.use_gpu : True
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - args.distributed : False
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - config.optimizer = edict()
+2025-10-22 16:17:25,936 - gcn_skeleton_memory_optimized - INFO - config.optimizer.type : AdamW
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.optimizer.kwargs = edict()
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.optimizer.kwargs.lr : 0.0008
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.optimizer.kwargs.weight_decay : 0.0001
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.scheduler = edict()
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.scheduler.type : CosLR
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.scheduler.kwargs = edict()
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.scheduler.kwargs.epochs : 100
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.scheduler.kwargs.initial_epochs : 5
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.scheduler.kwargs.warming_up_init_lr : 0.0001
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.kldweight = edict()
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.kldweight.start : 0.0
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.kldweight.target : 0.1
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.kldweight.ntime : 5000
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.dataset = edict()
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.dataset.train = edict()
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_ = edict()
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.NAME : NTU_Skeleton_Raw
+2025-10-22 16:17:25,937 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.DATA_PATH : ../HumanPoint-BERT/data/NTU-RGB+D
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.N_POINTS : 25
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.action_filter = edict()
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.action_filter.exclude : [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120]
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.action_filter.description : 排除双人交互动作，仅使用单人动作进行训练
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.dataset_split = edict()
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.dataset_split.train_ratio : 0.8
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.dataset_split.val_ratio : 0.15
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.dataset_split.test_ratio : 0.05
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.dataset_split.split_method : cross_subject
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train._base_.dataset_split.description : 按照交叉主体协议划分数据集
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train.others = edict()
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train.others.subset : train
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train.others.npoints : 25
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train.others.normalize : True
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.train.others.bs : 8
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val = edict()
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_ = edict()
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.NAME : NTU_Skeleton_Raw
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.DATA_PATH : ../HumanPoint-BERT/data/NTU-RGB+D
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.N_POINTS : 25
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.action_filter = edict()
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.action_filter.exclude : [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120]
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.action_filter.description : 排除双人交互动作，仅使用单人动作进行训练
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.dataset_split = edict()
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.dataset_split.train_ratio : 0.8
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.dataset_split.val_ratio : 0.15
+2025-10-22 16:17:25,938 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.dataset_split.test_ratio : 0.05
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.dataset_split.split_method : cross_subject
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.val._base_.dataset_split.description : 按照交叉主体协议划分数据集
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.val.others = edict()
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.val.others.subset : val
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.val.others.npoints : 25
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.val.others.normalize : True
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.val.others.bs : 1
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test = edict()
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_ = edict()
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.NAME : NTU_Skeleton_Raw
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.DATA_PATH : ../HumanPoint-BERT/data/NTU-RGB+D
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.N_POINTS : 25
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.action_filter = edict()
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.action_filter.exclude : [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120]
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.action_filter.description : 排除双人交互动作，仅使用单人动作进行训练
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.dataset_split = edict()
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.dataset_split.train_ratio : 0.8
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.dataset_split.val_ratio : 0.15
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.dataset_split.test_ratio : 0.05
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.dataset_split.split_method : cross_subject
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test._base_.dataset_split.description : 按照交叉主体协议划分数据集
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test.others = edict()
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test.others.subset : test
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test.others.npoints : 25
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test.others.normalize : True
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.dataset.test.others.bs : 1
+2025-10-22 16:17:25,939 - gcn_skeleton_memory_optimized - INFO - config.model = edict()
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.model.NAME : GCNSkeletonTokenizer
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.model.num_joints : 25
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.model.num_tokens : 640
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.model.token_dim : 256
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.model.temporal_length : 1
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.total_bs : 8
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.step_per_update : 2
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.max_epoch : 50
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.use_gpu : True
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.val_freq : 10
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.num_workers : 2
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.seed : 2021
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - config.consider_metric : CDL1
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - Distributed training: False
+2025-10-22 16:17:25,940 - gcn_skeleton_memory_optimized - INFO - Set random seed to 0, deterministic: False
+2025-10-22 16:20:01,189 - gcn_skeleton_memory_optimized - INFO - Using Data parallel ...
+2025-10-22 16:20:01,825 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1/8927] BatchTime = 0.633 (s) DataTime = 0.068 (s) Losses = ['2517.9534', '698.4550'] lr = 0.000001
+2025-10-22 16:20:02,546 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 21/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2466.7733', '709.4671'] lr = 0.000001
+2025-10-22 16:20:03,265 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 41/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2502.5938', '664.4629'] lr = 0.000001
+2025-10-22 16:20:03,929 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 61/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2472.7480', '721.9750'] lr = 0.000001
+2025-10-22 16:20:04,455 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 81/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2516.3803', '695.6841'] lr = 0.000001
+2025-10-22 16:20:04,978 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 101/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2540.5581', '711.8983'] lr = 0.000001
+2025-10-22 16:20:05,521 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 121/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2449.3670', '654.8685'] lr = 0.000001
+2025-10-22 16:20:06,039 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 141/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2465.0733', '675.8706'] lr = 0.000001
+2025-10-22 16:20:06,631 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 161/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2421.5493', '671.1057'] lr = 0.000001
+2025-10-22 16:20:07,250 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 181/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2519.9478', '743.1861'] lr = 0.000001
+2025-10-22 16:20:07,862 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 201/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2515.9788', '747.6165'] lr = 0.000001
+2025-10-22 16:20:08,459 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 221/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2508.1491', '689.7643'] lr = 0.000001
+2025-10-22 16:20:09,085 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 241/8927] BatchTime = 0.036 (s) DataTime = 0.001 (s) Losses = ['2557.2307', '731.9381'] lr = 0.000001
+2025-10-22 16:20:09,664 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 261/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2381.7098', '714.4594'] lr = 0.000001
+2025-10-22 16:20:10,305 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 281/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2486.3069', '673.0511'] lr = 0.000001
+2025-10-22 16:20:10,963 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 301/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2395.8642', '657.5786'] lr = 0.000001
+2025-10-22 16:20:11,549 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 321/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2527.4732', '739.9276'] lr = 0.000001
+2025-10-22 16:20:12,210 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 341/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2424.5100', '693.5456'] lr = 0.000001
+2025-10-22 16:20:12,805 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 361/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2553.5915', '733.1103'] lr = 0.000001
+2025-10-22 16:20:13,424 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 381/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2551.3875', '719.8182'] lr = 0.000001
+2025-10-22 16:20:14,013 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 401/8927] BatchTime = 0.026 (s) DataTime = 0.002 (s) Losses = ['2402.8878', '719.0918'] lr = 0.000001
+2025-10-22 16:20:14,647 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 421/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2559.2351', '761.1675'] lr = 0.000001
+2025-10-22 16:20:15,302 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 441/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2531.4097', '699.6368'] lr = 0.000001
+2025-10-22 16:20:15,899 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 461/8927] BatchTime = 0.041 (s) DataTime = 0.001 (s) Losses = ['2577.3396', '778.4539'] lr = 0.000001
+2025-10-22 16:20:16,475 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 481/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2370.8613', '658.8370'] lr = 0.000001
+2025-10-22 16:20:17,110 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 501/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2337.0314', '669.9008'] lr = 0.000001
+2025-10-22 16:20:17,757 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 521/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2454.5724', '682.5324'] lr = 0.000001
+2025-10-22 16:20:18,426 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 541/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2428.5474', '733.8067'] lr = 0.000001
+2025-10-22 16:20:19,055 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 561/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2425.1428', '682.3329'] lr = 0.000001
+2025-10-22 16:20:19,700 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 581/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2372.2425', '658.9087'] lr = 0.000001
+2025-10-22 16:20:20,334 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 601/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2417.1739', '666.5841'] lr = 0.000001
+2025-10-22 16:20:20,921 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 621/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2428.7949', '697.9445'] lr = 0.000001
+2025-10-22 16:20:21,550 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 641/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2413.5940', '657.3516'] lr = 0.000001
+2025-10-22 16:20:22,158 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 661/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2445.3368', '677.8218'] lr = 0.000001
+2025-10-22 16:20:22,809 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 681/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2437.8307', '657.0929'] lr = 0.000001
+2025-10-22 16:20:23,488 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 701/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2431.7355', '677.9329'] lr = 0.000001
+2025-10-22 16:20:24,077 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 721/8927] BatchTime = 0.043 (s) DataTime = 0.001 (s) Losses = ['2489.8643', '684.1941'] lr = 0.000001
+2025-10-22 16:20:24,696 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 741/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2436.1973', '690.7897'] lr = 0.000001
+2025-10-22 16:20:25,382 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 761/8927] BatchTime = 0.032 (s) DataTime = 0.002 (s) Losses = ['2348.3305', '617.4299'] lr = 0.000001
+2025-10-22 16:20:25,974 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 781/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2447.7582', '641.4639'] lr = 0.000001
+2025-10-22 16:20:26,659 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 801/8927] BatchTime = 0.051 (s) DataTime = 0.001 (s) Losses = ['2461.8001', '702.7130'] lr = 0.000001
+2025-10-22 16:20:27,289 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 821/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2420.4283', '731.6450'] lr = 0.000001
+2025-10-22 16:20:27,939 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 841/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2385.2136', '690.4243'] lr = 0.000001
+2025-10-22 16:20:28,559 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 861/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2353.3404', '661.3159'] lr = 0.000001
+2025-10-22 16:20:29,173 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 881/8927] BatchTime = 0.036 (s) DataTime = 0.001 (s) Losses = ['2412.1900', '646.8894'] lr = 0.000001
+2025-10-22 16:20:29,807 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 901/8927] BatchTime = 0.030 (s) DataTime = 0.001 (s) Losses = ['2372.1006', '633.7290'] lr = 0.000001
+2025-10-22 16:20:30,357 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 921/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2403.4953', '631.5759'] lr = 0.000001
+2025-10-22 16:20:30,982 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 941/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2484.1771', '744.1450'] lr = 0.000001
+2025-10-22 16:20:31,520 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 961/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2362.9708', '654.9925'] lr = 0.000001
+2025-10-22 16:20:32,048 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 981/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2290.7126', '636.5061'] lr = 0.000001
+2025-10-22 16:20:32,602 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1001/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2460.0019', '720.2682'] lr = 0.000001
+2025-10-22 16:20:33,117 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1021/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2469.7709', '684.7116'] lr = 0.000001
+2025-10-22 16:20:33,702 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1041/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2408.7086', '699.3091'] lr = 0.000001
+2025-10-22 16:20:34,374 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1061/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2472.6090', '700.2761'] lr = 0.000001
+2025-10-22 16:20:34,967 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1081/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2403.7387', '621.0412'] lr = 0.000001
+2025-10-22 16:20:35,573 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1101/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2422.6184', '696.4317'] lr = 0.000001
+2025-10-22 16:20:36,184 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1121/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2562.2969', '765.2639'] lr = 0.000001
+2025-10-22 16:20:36,829 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1141/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2401.3267', '662.5757'] lr = 0.000001
+2025-10-22 16:20:37,428 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1161/8927] BatchTime = 0.037 (s) DataTime = 0.001 (s) Losses = ['2389.9782', '670.2955'] lr = 0.000001
+2025-10-22 16:20:37,975 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1181/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2438.1216', '728.5962'] lr = 0.000001
+2025-10-22 16:20:38,637 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1201/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2410.4893', '707.2821'] lr = 0.000001
+2025-10-22 16:20:39,190 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1221/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2255.1699', '624.0041'] lr = 0.000001
+2025-10-22 16:20:39,827 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1241/8927] BatchTime = 0.030 (s) DataTime = 0.001 (s) Losses = ['2421.1836', '701.6864'] lr = 0.000001
+2025-10-22 16:20:40,395 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1261/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2459.9698', '685.3388'] lr = 0.000001
+2025-10-22 16:20:41,011 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1281/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2405.7570', '691.2302'] lr = 0.000001
+2025-10-22 16:20:41,639 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1301/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2332.3789', '681.2438'] lr = 0.000001
+2025-10-22 16:20:42,257 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1321/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2369.1092', '692.0208'] lr = 0.000001
+2025-10-22 16:20:42,910 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1341/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2436.5809', '699.8200'] lr = 0.000001
+2025-10-22 16:20:43,527 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1361/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2434.9742', '702.7892'] lr = 0.000001
+2025-10-22 16:20:44,096 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1381/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2299.6271', '614.4111'] lr = 0.000001
+2025-10-22 16:20:44,682 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1401/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2414.8977', '717.1291'] lr = 0.000001
+2025-10-22 16:20:45,281 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1421/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2372.2992', '673.5969'] lr = 0.000001
+2025-10-22 16:20:45,873 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1441/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2496.2597', '742.9858'] lr = 0.000001
+2025-10-22 16:20:46,491 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1461/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2450.4597', '699.6518'] lr = 0.000001
+2025-10-22 16:20:47,157 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1481/8927] BatchTime = 0.034 (s) DataTime = 0.001 (s) Losses = ['2361.8801', '664.8123'] lr = 0.000001
+2025-10-22 16:20:47,716 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1501/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2357.0929', '655.3607'] lr = 0.000001
+2025-10-22 16:20:48,271 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1521/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2498.9882', '746.8151'] lr = 0.000001
+2025-10-22 16:20:48,870 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1541/8927] BatchTime = 0.038 (s) DataTime = 0.001 (s) Losses = ['2462.0357', '704.4624'] lr = 0.000001
+2025-10-22 16:20:49,480 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1561/8927] BatchTime = 0.037 (s) DataTime = 0.001 (s) Losses = ['2354.4705', '696.6645'] lr = 0.000001
+2025-10-22 16:20:50,104 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1581/8927] BatchTime = 0.034 (s) DataTime = 0.001 (s) Losses = ['2459.8298', '656.3796'] lr = 0.000001
+2025-10-22 16:20:50,672 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1601/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2474.6041', '719.7292'] lr = 0.000001
+2025-10-22 16:20:51,259 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1621/8927] BatchTime = 0.030 (s) DataTime = 0.001 (s) Losses = ['2390.2237', '702.1649'] lr = 0.000001
+2025-10-22 16:20:51,864 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1641/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2362.4353', '685.8565'] lr = 0.000001
+2025-10-22 16:20:52,471 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1661/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2445.3626', '736.2748'] lr = 0.000001
+2025-10-22 16:20:53,078 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1681/8927] BatchTime = 0.033 (s) DataTime = 0.001 (s) Losses = ['2283.5095', '636.6962'] lr = 0.000001
+2025-10-22 16:20:53,719 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1701/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2373.0793', '683.6741'] lr = 0.000001
+2025-10-22 16:20:54,446 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1721/8927] BatchTime = 0.042 (s) DataTime = 0.001 (s) Losses = ['2429.3935', '739.8538'] lr = 0.000001
+2025-10-22 16:20:55,125 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1741/8927] BatchTime = 0.039 (s) DataTime = 0.001 (s) Losses = ['2472.1954', '715.1504'] lr = 0.000001
+2025-10-22 16:20:55,851 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1761/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2391.2568', '713.2610'] lr = 0.000001
+2025-10-22 16:20:56,531 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1781/8927] BatchTime = 0.039 (s) DataTime = 0.001 (s) Losses = ['2252.5864', '645.0928'] lr = 0.000001
+2025-10-22 16:20:57,228 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1801/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2364.1872', '639.4454'] lr = 0.000001
+2025-10-22 16:20:57,897 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1821/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2443.1233', '702.3799'] lr = 0.000001
+2025-10-22 16:20:58,587 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1841/8927] BatchTime = 0.039 (s) DataTime = 0.001 (s) Losses = ['2295.4946', '642.6979'] lr = 0.000001
+2025-10-22 16:20:59,295 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1861/8927] BatchTime = 0.038 (s) DataTime = 0.001 (s) Losses = ['2322.1235', '643.9637'] lr = 0.000001
+2025-10-22 16:21:00,054 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1881/8927] BatchTime = 0.049 (s) DataTime = 0.001 (s) Losses = ['2459.6698', '715.1173'] lr = 0.000001
+2025-10-22 16:21:00,739 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1901/8927] BatchTime = 0.039 (s) DataTime = 0.001 (s) Losses = ['2388.7491', '666.8192'] lr = 0.000001
+2025-10-22 16:21:01,460 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1921/8927] BatchTime = 0.037 (s) DataTime = 0.001 (s) Losses = ['2437.7375', '695.3575'] lr = 0.000001
+2025-10-22 16:21:02,086 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1941/8927] BatchTime = 0.030 (s) DataTime = 0.001 (s) Losses = ['2305.0685', '654.3302'] lr = 0.000001
+2025-10-22 16:21:02,757 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1961/8927] BatchTime = 0.040 (s) DataTime = 0.001 (s) Losses = ['2376.9355', '670.2296'] lr = 0.000001
+2025-10-22 16:21:03,497 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 1981/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2328.0392', '674.0910'] lr = 0.000001
+2025-10-22 16:21:04,230 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2001/8927] BatchTime = 0.034 (s) DataTime = 0.001 (s) Losses = ['2386.8179', '696.0257'] lr = 0.000001
+2025-10-22 16:21:04,908 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2021/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2379.5533', '701.5273'] lr = 0.000001
+2025-10-22 16:21:05,602 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2041/8927] BatchTime = 0.034 (s) DataTime = 0.001 (s) Losses = ['2471.8542', '712.3524'] lr = 0.000001
+2025-10-22 16:21:06,295 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2061/8927] BatchTime = 0.039 (s) DataTime = 0.001 (s) Losses = ['2478.0803', '697.4658'] lr = 0.000001
+2025-10-22 16:21:06,986 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2081/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2398.2975', '667.2984'] lr = 0.000001
+2025-10-22 16:21:07,538 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2101/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2346.4420', '654.4270'] lr = 0.000001
+2025-10-22 16:21:08,043 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2121/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2374.5732', '671.3333'] lr = 0.000001
+2025-10-22 16:21:08,588 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2141/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2382.9167', '683.4801'] lr = 0.000001
+2025-10-22 16:21:09,104 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2161/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2386.1942', '690.3853'] lr = 0.000001
+2025-10-22 16:21:09,621 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2181/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2416.4720', '708.5881'] lr = 0.000001
+2025-10-22 16:21:10,137 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2201/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2431.4957', '707.1299'] lr = 0.000001
+2025-10-22 16:21:10,658 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2221/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2417.3374', '697.6985'] lr = 0.000001
+2025-10-22 16:21:11,193 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2241/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2416.0416', '730.4137'] lr = 0.000001
+2025-10-22 16:21:11,739 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2261/8927] BatchTime = 0.042 (s) DataTime = 0.001 (s) Losses = ['2375.0165', '690.6616'] lr = 0.000001
+2025-10-22 16:21:12,272 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2281/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2367.0218', '703.8962'] lr = 0.000001
+2025-10-22 16:21:12,840 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2301/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2341.9223', '679.6979'] lr = 0.000001
+2025-10-22 16:21:13,360 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2321/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2400.6786', '705.6755'] lr = 0.000001
+2025-10-22 16:21:14,037 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2341/8927] BatchTime = 0.034 (s) DataTime = 0.001 (s) Losses = ['2289.3198', '660.9430'] lr = 0.000001
+2025-10-22 16:21:14,735 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2361/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2420.4335', '695.5711'] lr = 0.000001
+2025-10-22 16:21:15,443 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2381/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2410.9170', '691.4767'] lr = 0.000001
+2025-10-22 16:21:16,120 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2401/8927] BatchTime = 0.034 (s) DataTime = 0.001 (s) Losses = ['2418.4353', '729.3850'] lr = 0.000001
+2025-10-22 16:21:16,861 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2421/8927] BatchTime = 0.040 (s) DataTime = 0.002 (s) Losses = ['2256.9637', '618.4310'] lr = 0.000001
+2025-10-22 16:21:17,582 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2441/8927] BatchTime = 0.034 (s) DataTime = 0.001 (s) Losses = ['2313.4861', '649.5007'] lr = 0.000001
+2025-10-22 16:21:18,252 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2461/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2370.6250', '697.7600'] lr = 0.000001
+2025-10-22 16:21:18,914 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2481/8927] BatchTime = 0.036 (s) DataTime = 0.001 (s) Losses = ['2330.1105', '654.6935'] lr = 0.000001
+2025-10-22 16:21:19,603 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2501/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2329.4678', '656.1971'] lr = 0.000001
+2025-10-22 16:21:20,292 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2521/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2371.9723', '664.7935'] lr = 0.000001
+2025-10-22 16:21:21,002 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2541/8927] BatchTime = 0.034 (s) DataTime = 0.001 (s) Losses = ['2376.6317', '688.6141'] lr = 0.000001
+2025-10-22 16:21:21,713 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2561/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2332.0584', '671.3061'] lr = 0.000001
+2025-10-22 16:21:22,387 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2581/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2327.1117', '656.7161'] lr = 0.000001
+2025-10-22 16:21:23,111 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2601/8927] BatchTime = 0.030 (s) DataTime = 0.001 (s) Losses = ['2387.4121', '702.1683'] lr = 0.000001
+2025-10-22 16:21:23,792 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2621/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2283.7577', '612.3089'] lr = 0.000001
+2025-10-22 16:21:24,421 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2641/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2355.3283', '684.1106'] lr = 0.000001
+2025-10-22 16:21:24,958 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2661/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2303.7100', '657.5568'] lr = 0.000001
+2025-10-22 16:21:25,726 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2681/8927] BatchTime = 0.040 (s) DataTime = 0.001 (s) Losses = ['2306.3576', '654.6534'] lr = 0.000001
+2025-10-22 16:21:26,454 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2701/8927] BatchTime = 0.046 (s) DataTime = 0.001 (s) Losses = ['2351.1138', '701.7741'] lr = 0.000001
+2025-10-22 16:21:27,116 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2721/8927] BatchTime = 0.036 (s) DataTime = 0.001 (s) Losses = ['2323.8001', '689.5791'] lr = 0.000001
+2025-10-22 16:21:27,841 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2741/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2350.1315', '673.8461'] lr = 0.000001
+2025-10-22 16:21:28,486 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2761/8927] BatchTime = 0.038 (s) DataTime = 0.001 (s) Losses = ['2342.1283', '660.0144'] lr = 0.000001
+2025-10-22 16:21:29,210 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2781/8927] BatchTime = 0.039 (s) DataTime = 0.001 (s) Losses = ['2278.6613', '666.9356'] lr = 0.000001
+2025-10-22 16:21:29,936 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2801/8927] BatchTime = 0.040 (s) DataTime = 0.002 (s) Losses = ['2210.9075', '606.7203'] lr = 0.000001
+2025-10-22 16:21:30,621 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2821/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2287.1106', '669.2424'] lr = 0.000001
+2025-10-22 16:21:31,288 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2841/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2434.4249', '730.9628'] lr = 0.000001
+2025-10-22 16:21:31,952 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2861/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2242.3170', '608.6502'] lr = 0.000001
+2025-10-22 16:21:32,634 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2881/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2374.8484', '647.3803'] lr = 0.000001
+2025-10-22 16:21:33,338 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2901/8927] BatchTime = 0.037 (s) DataTime = 0.001 (s) Losses = ['2395.6246', '682.8803'] lr = 0.000001
+2025-10-22 16:21:34,045 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2921/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2314.8165', '668.8273'] lr = 0.000001
+2025-10-22 16:21:34,724 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2941/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2469.6026', '781.1888'] lr = 0.000001
+2025-10-22 16:21:35,433 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2961/8927] BatchTime = 0.037 (s) DataTime = 0.001 (s) Losses = ['2276.5131', '641.3041'] lr = 0.000001
+2025-10-22 16:21:36,137 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 2981/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2239.7738', '640.5438'] lr = 0.000001
+2025-10-22 16:21:36,862 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3001/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2349.0899', '681.3853'] lr = 0.000001
+2025-10-22 16:21:37,581 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3021/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2312.9644', '656.0208'] lr = 0.000001
+2025-10-22 16:21:38,211 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3041/8927] BatchTime = 0.030 (s) DataTime = 0.001 (s) Losses = ['2290.9913', '663.8973'] lr = 0.000001
+2025-10-22 16:21:38,963 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3061/8927] BatchTime = 0.038 (s) DataTime = 0.001 (s) Losses = ['2340.5700', '698.1620'] lr = 0.000001
+2025-10-22 16:21:39,667 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3081/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2247.5226', '648.8805'] lr = 0.000001
+2025-10-22 16:21:40,397 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3101/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2322.7057', '681.8029'] lr = 0.000001
+2025-10-22 16:21:41,105 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3121/8927] BatchTime = 0.039 (s) DataTime = 0.001 (s) Losses = ['2256.0146', '627.7168'] lr = 0.000001
+2025-10-22 16:21:41,784 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3141/8927] BatchTime = 0.033 (s) DataTime = 0.001 (s) Losses = ['2328.0222', '662.3929'] lr = 0.000001
+2025-10-22 16:21:42,536 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3161/8927] BatchTime = 0.036 (s) DataTime = 0.001 (s) Losses = ['2417.1417', '691.8457'] lr = 0.000001
+2025-10-22 16:21:43,268 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3181/8927] BatchTime = 0.035 (s) DataTime = 0.001 (s) Losses = ['2414.2511', '727.7180'] lr = 0.000001
+2025-10-22 16:21:43,924 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3201/8927] BatchTime = 0.036 (s) DataTime = 0.001 (s) Losses = ['2321.5518', '667.3337'] lr = 0.000001
+2025-10-22 16:21:44,625 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3221/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2247.1254', '647.8765'] lr = 0.000001
+2025-10-22 16:21:45,139 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3241/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2402.0619', '702.8673'] lr = 0.000001
+2025-10-22 16:21:45,662 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3261/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2225.8036', '611.2912'] lr = 0.000001
+2025-10-22 16:21:46,213 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3281/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2237.7377', '587.9421'] lr = 0.000001
+2025-10-22 16:21:46,759 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3301/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2348.6257', '724.0790'] lr = 0.000001
+2025-10-22 16:21:47,303 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3321/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2384.3760', '712.8489'] lr = 0.000001
+2025-10-22 16:21:47,821 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3341/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2293.3290', '644.4444'] lr = 0.000001
+2025-10-22 16:21:48,323 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3361/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2313.5979', '681.8473'] lr = 0.000001
+2025-10-22 16:21:48,853 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3381/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2246.9831', '652.2677'] lr = 0.000001
+2025-10-22 16:21:49,383 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3401/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2354.2614', '694.4200'] lr = 0.000001
+2025-10-22 16:21:49,914 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3421/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2424.2139', '674.9920'] lr = 0.000001
+2025-10-22 16:21:50,436 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3441/8927] BatchTime = 0.026 (s) DataTime = 0.002 (s) Losses = ['2444.6280', '751.9063'] lr = 0.000001
+2025-10-22 16:21:50,977 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3461/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2310.7798', '690.3842'] lr = 0.000001
+2025-10-22 16:21:51,515 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3481/8927] BatchTime = 0.034 (s) DataTime = 0.001 (s) Losses = ['2310.5993', '686.6894'] lr = 0.000001
+2025-10-22 16:21:52,036 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3501/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2305.9134', '672.3686'] lr = 0.000001
+2025-10-22 16:21:52,583 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3521/8927] BatchTime = 0.038 (s) DataTime = 0.001 (s) Losses = ['2240.4041', '636.8588'] lr = 0.000001
+2025-10-22 16:21:53,099 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3541/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2304.5361', '681.8008'] lr = 0.000001
+2025-10-22 16:21:53,629 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3561/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2382.7820', '711.7752'] lr = 0.000001
+2025-10-22 16:21:54,137 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3581/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2388.9091', '722.5782'] lr = 0.000001
+2025-10-22 16:21:54,668 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3601/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2269.8336', '654.6186'] lr = 0.000001
+2025-10-22 16:21:55,175 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3621/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2290.3743', '676.4005'] lr = 0.000001
+2025-10-22 16:21:55,724 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3641/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2234.3178', '643.2507'] lr = 0.000001
+2025-10-22 16:21:56,263 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3661/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2288.7251', '676.2866'] lr = 0.000001
+2025-10-22 16:21:56,808 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3681/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2254.9019', '641.7016'] lr = 0.000001
+2025-10-22 16:21:57,322 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3701/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2318.3293', '707.7343'] lr = 0.000001
+2025-10-22 16:21:57,849 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3721/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2315.3682', '679.0029'] lr = 0.000001
+2025-10-22 16:21:58,358 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3741/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2343.5130', '708.7831'] lr = 0.000001
+2025-10-22 16:21:58,887 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3761/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2284.7366', '678.6050'] lr = 0.000001
+2025-10-22 16:21:59,420 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3781/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2296.9499', '661.3259'] lr = 0.000001
+2025-10-22 16:21:59,969 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3801/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2374.0001', '735.3839'] lr = 0.000001
+2025-10-22 16:22:00,528 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3821/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2315.9215', '665.6525'] lr = 0.000001
+2025-10-22 16:22:01,032 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3841/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2279.9690', '668.4669'] lr = 0.000001
+2025-10-22 16:22:01,561 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3861/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2357.2121', '688.9948'] lr = 0.000001
+2025-10-22 16:22:02,067 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3881/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2331.6660', '698.6160'] lr = 0.000001
+2025-10-22 16:22:02,599 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3901/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2303.0560', '697.6010'] lr = 0.000001
+2025-10-22 16:22:03,108 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3921/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2307.6110', '698.1657'] lr = 0.000001
+2025-10-22 16:22:03,620 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3941/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2266.1991', '676.6844'] lr = 0.000001
+2025-10-22 16:22:04,148 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3961/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2398.4482', '711.2058'] lr = 0.000001
+2025-10-22 16:22:04,679 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 3981/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2337.9436', '676.1888'] lr = 0.000001
+2025-10-22 16:22:05,199 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4001/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2372.8986', '692.8142'] lr = 0.000001
+2025-10-22 16:22:05,720 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4021/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2294.0490', '712.9586'] lr = 0.000001
+2025-10-22 16:22:06,234 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4041/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2254.7507', '642.8847'] lr = 0.000001
+2025-10-22 16:22:06,763 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4061/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2349.1182', '682.7022'] lr = 0.000001
+2025-10-22 16:22:07,274 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4081/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2293.1979', '654.8124'] lr = 0.000001
+2025-10-22 16:22:07,840 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4101/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2322.7968', '724.1652'] lr = 0.000001
+2025-10-22 16:22:08,368 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4121/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2275.2495', '656.7324'] lr = 0.000001
+2025-10-22 16:22:08,895 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4141/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2326.8595', '670.8335'] lr = 0.000001
+2025-10-22 16:22:09,400 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4161/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2284.7414', '665.3354'] lr = 0.000001
+2025-10-22 16:22:09,903 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4181/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2387.2373', '747.8318'] lr = 0.000001
+2025-10-22 16:22:10,416 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4201/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2372.4027', '709.3368'] lr = 0.000001
+2025-10-22 16:22:10,922 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4221/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2315.7468', '680.5456'] lr = 0.000001
+2025-10-22 16:22:11,429 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4241/8927] BatchTime = 0.022 (s) DataTime = 0.001 (s) Losses = ['2139.0891', '584.1515'] lr = 0.000001
+2025-10-22 16:22:11,944 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4261/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2347.5218', '665.4623'] lr = 0.000001
+2025-10-22 16:22:12,467 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4281/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2431.7942', '770.4265'] lr = 0.000001
+2025-10-22 16:22:13,003 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4301/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2390.3799', '737.4765'] lr = 0.000001
+2025-10-22 16:22:13,535 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4321/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2260.9248', '658.1625'] lr = 0.000001
+2025-10-22 16:22:14,062 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4341/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2300.4112', '709.1789'] lr = 0.000001
+2025-10-22 16:22:14,569 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4361/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2305.6736', '719.0790'] lr = 0.000001
+2025-10-22 16:22:15,090 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4381/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2304.1754', '670.8351'] lr = 0.000001
+2025-10-22 16:22:15,601 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4401/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2249.5136', '694.3204'] lr = 0.000001
+2025-10-22 16:22:16,124 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4421/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2281.3952', '674.0572'] lr = 0.000001
+2025-10-22 16:22:16,664 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4441/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2321.3120', '669.0673'] lr = 0.000001
+2025-10-22 16:22:17,198 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4461/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2160.5539', '642.9295'] lr = 0.000001
+2025-10-22 16:22:17,720 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4481/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2236.6650', '697.8538'] lr = 0.000001
+2025-10-22 16:22:18,229 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4501/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2255.1498', '650.6823'] lr = 0.000001
+2025-10-22 16:22:18,770 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4521/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2339.9363', '683.9661'] lr = 0.000001
+2025-10-22 16:22:19,331 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4541/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2238.3008', '678.1837'] lr = 0.000001
+2025-10-22 16:22:19,876 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4561/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2309.2308', '712.0086'] lr = 0.000001
+2025-10-22 16:22:20,414 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4581/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2280.2835', '669.4651'] lr = 0.000001
+2025-10-22 16:22:20,948 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4601/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2383.3532', '687.8009'] lr = 0.000001
+2025-10-22 16:22:21,489 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4621/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2202.2181', '628.6843'] lr = 0.000001
+2025-10-22 16:22:22,029 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4641/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2252.8665', '638.2342'] lr = 0.000001
+2025-10-22 16:22:22,581 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4661/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2265.0886', '657.5400'] lr = 0.000001
+2025-10-22 16:22:23,101 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4681/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2193.0623', '643.3915'] lr = 0.000001
+2025-10-22 16:22:23,626 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4701/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2230.8404', '655.1697'] lr = 0.000001
+2025-10-22 16:22:24,150 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4721/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2277.8842', '673.5563'] lr = 0.000001
+2025-10-22 16:22:24,671 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4741/8927] BatchTime = 0.030 (s) DataTime = 0.001 (s) Losses = ['2413.9428', '758.1438'] lr = 0.000001
+2025-10-22 16:22:25,214 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4761/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2225.8775', '636.8490'] lr = 0.000001
+2025-10-22 16:22:25,755 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4781/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2262.9743', '687.1264'] lr = 0.000001
+2025-10-22 16:22:26,277 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4801/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2250.9563', '666.3843'] lr = 0.000001
+2025-10-22 16:22:26,812 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4821/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2306.9024', '704.1845'] lr = 0.000001
+2025-10-22 16:22:27,327 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4841/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2287.5047', '685.1938'] lr = 0.000001
+2025-10-22 16:22:27,863 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4861/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2257.3225', '668.7898'] lr = 0.000001
+2025-10-22 16:22:28,397 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4881/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2370.9483', '748.0142'] lr = 0.000001
+2025-10-22 16:22:28,920 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4901/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2356.1535', '725.6350'] lr = 0.000001
+2025-10-22 16:22:29,466 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4921/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2220.3364', '645.5535'] lr = 0.000001
+2025-10-22 16:22:30,151 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4941/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2368.7596', '693.9533'] lr = 0.000001
+2025-10-22 16:22:30,699 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4961/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2279.3841', '670.4320'] lr = 0.000001
+2025-10-22 16:22:31,248 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 4981/8927] BatchTime = 0.031 (s) DataTime = 0.001 (s) Losses = ['2197.9795', '618.5840'] lr = 0.000001
+2025-10-22 16:22:31,891 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5001/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2408.7749', '776.1027'] lr = 0.000001
+2025-10-22 16:22:32,508 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5021/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2301.7862', '675.1525'] lr = 0.000001
+2025-10-22 16:22:33,142 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5041/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2305.5720', '682.5473'] lr = 0.000001
+2025-10-22 16:22:33,736 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5061/8927] BatchTime = 0.022 (s) DataTime = 0.001 (s) Losses = ['2300.3569', '693.9249'] lr = 0.000001
+2025-10-22 16:22:34,337 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5081/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2265.6748', '686.0030'] lr = 0.000001
+2025-10-22 16:22:34,984 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5101/8927] BatchTime = 0.036 (s) DataTime = 0.001 (s) Losses = ['2285.3131', '667.8128'] lr = 0.000001
+2025-10-22 16:22:35,564 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5121/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2275.0530', '677.9667'] lr = 0.000001
+2025-10-22 16:22:36,108 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5141/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2265.5993', '633.2456'] lr = 0.000001
+2025-10-22 16:22:36,622 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5161/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2195.1292', '634.9633'] lr = 0.000001
+2025-10-22 16:22:37,158 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5181/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2301.2173', '677.7499'] lr = 0.000001
+2025-10-22 16:22:37,678 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5201/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2249.5835', '693.8536'] lr = 0.000001
+2025-10-22 16:22:38,198 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5221/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2304.2769', '679.6718'] lr = 0.000001
+2025-10-22 16:22:38,779 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5241/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2317.9135', '720.7745'] lr = 0.000001
+2025-10-22 16:22:39,339 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5261/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2299.9916', '682.4120'] lr = 0.000001
+2025-10-22 16:22:39,866 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5281/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2221.3092', '634.5690'] lr = 0.000001
+2025-10-22 16:22:40,499 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5301/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2210.3148', '641.1647'] lr = 0.000001
+2025-10-22 16:22:41,079 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5321/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2261.6262', '641.4607'] lr = 0.000001
+2025-10-22 16:22:41,652 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5341/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2245.6582', '658.0679'] lr = 0.000001
+2025-10-22 16:22:42,246 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5361/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2310.7507', '688.0965'] lr = 0.000001
+2025-10-22 16:22:42,797 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5381/8927] BatchTime = 0.030 (s) DataTime = 0.001 (s) Losses = ['2239.3124', '667.3541'] lr = 0.000001
+2025-10-22 16:22:43,311 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5401/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2227.6065', '649.4339'] lr = 0.000001
+2025-10-22 16:22:43,850 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5421/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2276.3710', '657.0243'] lr = 0.000001
+2025-10-22 16:22:44,376 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5441/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2281.2366', '672.4464'] lr = 0.000001
+2025-10-22 16:22:44,955 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5461/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2234.4351', '655.9035'] lr = 0.000001
+2025-10-22 16:22:45,469 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5481/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2258.7204', '686.4207'] lr = 0.000001
+2025-10-22 16:22:46,008 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5501/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2245.0550', '658.3595'] lr = 0.000001
+2025-10-22 16:22:46,537 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5521/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2242.7363', '658.7741'] lr = 0.000001
+2025-10-22 16:22:47,077 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5541/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2278.7585', '693.8376'] lr = 0.000001
+2025-10-22 16:22:47,638 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5561/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2254.1633', '685.9428'] lr = 0.000001
+2025-10-22 16:22:48,158 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5581/8927] BatchTime = 0.037 (s) DataTime = 0.001 (s) Losses = ['2199.7478', '659.6224'] lr = 0.000001
+2025-10-22 16:22:48,696 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5601/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2211.2837', '640.6300'] lr = 0.000001
+2025-10-22 16:22:49,215 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5621/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2387.6421', '761.8602'] lr = 0.000001
+2025-10-22 16:22:49,727 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5641/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2223.4859', '661.7742'] lr = 0.000001
+2025-10-22 16:22:50,291 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5661/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2210.9919', '710.5742'] lr = 0.000001
+2025-10-22 16:22:50,819 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5681/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2294.3904', '742.0743'] lr = 0.000001
+2025-10-22 16:22:51,363 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5701/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2261.9438', '689.2223'] lr = 0.000001
+2025-10-22 16:22:51,898 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5721/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2282.5851', '716.0314'] lr = 0.000001
+2025-10-22 16:22:52,469 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5741/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2168.0224', '543.7372'] lr = 0.000001
+2025-10-22 16:22:53,013 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5761/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2161.2005', '614.9145'] lr = 0.000001
+2025-10-22 16:22:53,532 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5781/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2295.6462', '708.1438'] lr = 0.000001
+2025-10-22 16:22:54,091 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5801/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2103.6215', '653.7080'] lr = 0.000001
+2025-10-22 16:22:54,635 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5821/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2293.4072', '720.8624'] lr = 0.000001
+2025-10-22 16:22:55,145 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5841/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2285.6421', '695.1278'] lr = 0.000001
+2025-10-22 16:22:55,684 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5861/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2246.9926', '636.9150'] lr = 0.000001
+2025-10-22 16:22:56,204 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5881/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2276.4878', '666.6827'] lr = 0.000001
+2025-10-22 16:22:56,719 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5901/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2232.7158', '659.0566'] lr = 0.000001
+2025-10-22 16:22:57,227 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5921/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2317.6537', '694.1714'] lr = 0.000001
+2025-10-22 16:22:57,744 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5941/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2368.7506', '743.2333'] lr = 0.000001
+2025-10-22 16:22:58,282 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5961/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2248.4627', '696.4345'] lr = 0.000001
+2025-10-22 16:22:58,799 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 5981/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2272.6278', '712.9041'] lr = 0.000001
+2025-10-22 16:22:59,317 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6001/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2204.1409', '639.8697'] lr = 0.000001
+2025-10-22 16:22:59,832 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6021/8927] BatchTime = 0.028 (s) DataTime = 0.001 (s) Losses = ['2317.0474', '676.8972'] lr = 0.000001
+2025-10-22 16:23:00,378 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6041/8927] BatchTime = 0.027 (s) DataTime = 0.001 (s) Losses = ['2198.3318', '663.5777'] lr = 0.000001
+2025-10-22 16:23:00,957 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6061/8927] BatchTime = 0.032 (s) DataTime = 0.001 (s) Losses = ['2150.8813', '619.6856'] lr = 0.000001
+2025-10-22 16:23:01,538 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6081/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2261.3897', '644.2463'] lr = 0.000001
+2025-10-22 16:23:02,168 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6101/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2266.0570', '692.0965'] lr = 0.000001
+2025-10-22 16:23:02,724 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6121/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2314.2352', '688.4888'] lr = 0.000001
+2025-10-22 16:23:03,304 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6141/8927] BatchTime = 0.033 (s) DataTime = 0.001 (s) Losses = ['2237.6678', '677.7869'] lr = 0.000001
+2025-10-22 16:23:03,891 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6161/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2170.8708', '669.8606'] lr = 0.000001
+2025-10-22 16:23:04,522 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6181/8927] BatchTime = 0.029 (s) DataTime = 0.001 (s) Losses = ['2252.5389', '621.0476'] lr = 0.000001
+2025-10-22 16:23:05,073 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6201/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2292.1970', '694.2444'] lr = 0.000001
+2025-10-22 16:23:05,587 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6221/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2215.2183', '652.1389'] lr = 0.000001
+2025-10-22 16:23:06,135 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6241/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2223.8262', '656.9911'] lr = 0.000001
+2025-10-22 16:23:06,729 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6261/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2282.9316', '620.9278'] lr = 0.000001
+2025-10-22 16:23:07,283 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6281/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2282.0685', '647.0194'] lr = 0.000001
+2025-10-22 16:23:07,872 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6301/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2187.5279', '637.5790'] lr = 0.000001
+2025-10-22 16:23:08,497 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6321/8927] BatchTime = 0.033 (s) DataTime = 0.001 (s) Losses = ['2134.4867', '604.1061'] lr = 0.000001
+2025-10-22 16:23:09,119 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6341/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2216.3537', '687.5162'] lr = 0.000001
+2025-10-22 16:23:09,687 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6361/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2220.0935', '675.0937'] lr = 0.000001
+2025-10-22 16:23:10,226 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6381/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2198.0789', '594.3629'] lr = 0.000001
+2025-10-22 16:23:10,750 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6401/8927] BatchTime = 0.025 (s) DataTime = 0.001 (s) Losses = ['2325.7217', '705.4349'] lr = 0.000001
+2025-10-22 16:23:11,366 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6421/8927] BatchTime = 0.030 (s) DataTime = 0.001 (s) Losses = ['2290.7152', '689.1962'] lr = 0.000001
+2025-10-22 16:23:11,938 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6441/8927] BatchTime = 0.023 (s) DataTime = 0.001 (s) Losses = ['2184.3719', '627.9454'] lr = 0.000001
+2025-10-22 16:23:12,454 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6461/8927] BatchTime = 0.024 (s) DataTime = 0.001 (s) Losses = ['2311.5304', '697.8071'] lr = 0.000001
+2025-10-22 16:23:13,013 - gcn_skeleton_memory_optimized - INFO - [Epoch 0/50][Batch 6481/8927] BatchTime = 0.026 (s) DataTime = 0.001 (s) Losses = ['2239.2468', '700.1333'] lr = 0.000001

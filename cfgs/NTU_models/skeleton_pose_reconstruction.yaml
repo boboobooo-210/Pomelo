@@ -1,0 +1,139 @@
+# NTU RGB+D 骨架姿态重建配置
+# 阶段3：基于预训练Point-BERT的姿态重建任务
+
+optimizer: {
+  type: AdamW,
+  kwargs: {
+    lr: 0.0001,
+    weight_decay: 0.05,
+    betas: [0.9, 0.999]
+  }
+}
+
+scheduler: {
+  type: CosLR,
+  kwargs: {
+    epochs: 100,
+    initial_epochs: 5,
+    warming_up_init_lr: 0.00001
+  }
+}
+
+# 数据集配置
+dataset: {
+  train: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {
+      subset: 'train', 
+      npoints: 512,
+      points_per_bone: 21,
+      action_filter: 'dvae',
+      augment: true,
+      whole: false
+    }
+  },
+  val: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {
+      subset: 'val', 
+      npoints: 512,
+      points_per_bone: 21,
+      action_filter: 'dvae',
+      augment: false,
+      whole: false
+    }
+  },
+  test: { 
+    _base_: cfgs/dataset_configs/NTU_augmented.yaml, 
+    others: {
+      subset: 'test', 
+      npoints: 512,
+      points_per_bone: 21,
+      action_filter: 'dvae',
+      augment: false,
+      whole: false
+    }
+  }
+}
+
+# 姿态重建模型配置
+model: {
+  NAME: Point_BERT_Pose_Reconstruction,
+  
+  # 基础Point-BERT配置
+  group_size: 32,
+  num_group: 16,
+  trans_dim: 384,
+  depth: 12,
+  drop_path_rate: 0.1,
+  num_heads: 6,
+  
+  # 预训练模型
+  pretrained_checkpoint: './experiments/ntu_skeleton_point_bert_pretrain/ckpt-best.pth',
+  
+  # 姿态重建特定配置
+  pose_dim: 75,  # 25关节 × 3坐标 = 75维
+  reconstruction_head: {
+    hidden_dims: [384, 256, 128],
+    output_dim: 75,
+    dropout: 0.1
+  },
+  
+  # 损失函数配置
+  loss_config: {
+    joint_loss_weight: 1.0,      # 关节位置损失
+    bone_length_weight: 0.5,     # 骨长约束损失
+    angle_loss_weight: 0.3,      # 关节角度损失
+    smoothness_weight: 0.2       # 时序平滑性损失
+  }
+}
+
+# 训练设置
+total_bs: 32
+step_per_update: 1
+max_epoch: 100
+use_gpu: true
+val_freq: 5
+num_workers: 4
+seed: 2021
+
+# 评估指标
+evaluation_metrics: [
+  'joint_position_error',  # 关节位置误差
+  'bone_length_error',     # 骨长误差
+  'angle_error',           # 关节角度误差
+  'pck',                   # Percentage of Correct Keypoints
+  'auc'                    # Area Under Curve
+]
+
+# 微调阶段标识
+stage: "pose_reconstruction"
+task: "skeleton_pose_reconstruction"
+experiment_name: "ntu_skeleton_pose_reconstruction"
+description: "基于预训练Point-BERT的NTU RGB+D骨架姿态重建"
+
+# 依赖检查
+dependencies: {
+  point_bert_checkpoint: './experiments/ntu_skeleton_point_bert_pretrain/ckpt-best.pth',
+  required_stage: 'point_bert_pretrain'
+}
+
+# NTU特定配置
+ntu_config: {
+  num_joints: 25,
+  skeleton_connections: [
+    [3, 2], [2, 20], [20, 1], [1, 0],           # 头部-躯干
+    [20, 4], [4, 5], [5, 6], [6, 22], [6, 7], [7, 21],  # 左上肢
+    [20, 8], [8, 9], [9, 10], [10, 24], [10, 11], [11, 23],  # 右上肢
+    [0, 12], [12, 13], [13, 14], [14, 15],      # 左下肢
+    [0, 16], [16, 17], [17, 18], [18, 19]       # 右下肢
+  ],
+  joint_names: [
+    'spine_base', 'spine_mid', 'neck', 'head',
+    'shoulder_left', 'elbow_left', 'wrist_left', 'hand_left',
+    'shoulder_right', 'elbow_right', 'wrist_right', 'hand_right',
+    'hip_left', 'knee_left', 'ankle_left', 'foot_left',
+    'hip_right', 'knee_right', 'ankle_right', 'foot_right',
+    'spine_shoulder', 'hand_tip_left', 'thumb_left', 'hand_tip_right', 'thumb_right'
+  ]
+}
